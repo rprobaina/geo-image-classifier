@@ -1,18 +1,27 @@
-import javaxt.io.File;
-import javaxt.io.Image;
+/**
+ * GPS Image Finder
+ * @author Ricardo Peixoto Robaina
+ * @version 1.0
+ * @since 01/11/2018
+ */
 
-import java.awt.image.RenderedImage;
-
+/**
+ * Classe FotoGeo
+ *
+ * Esta classe contém as propriedades de uma imagem georreferenciada.
+ */
 public class FotoGeo {
     public String nome;
     public double[]coordenadas;
-   // public Image arquivoOriginal;
 
-
+    /**
+     * Construtor da Classe FotoGeo.
+     * @param nome Nome da imagem.
+     * @param coordenadas Vetor com as coordenadas recebidos dos metadados da imagem.
+     */
     public FotoGeo(String nome, double[] coordenadas) {
         this.nome = nome;
         this.coordenadas = coordenadas;
-       // this.arquivoOriginal = new Image(imagem);
     }
 
 }

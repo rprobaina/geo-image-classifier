@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="GPS Image Finder:jar">
+    <output-path>$USER_HOME$/Desktop</output-path>
+    <root id="archive" name="GPS Image Finder_jar.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$USER_HOME$/Desktop/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="GPS Image Finder" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/javaxt-core.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_gps_image_finder" default="compile.module.gps_image_finder">
+  <dirname property="module.gps_image_finder.basedir" file="${ant.file.module_gps_image_finder}"/>
+  
+  <property name="module.jdk.home.gps_image_finder" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.gps_image_finder" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.gps_image_finder" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.gps_image_finder" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="gps_image_finder.output.dir" value="${module.gps_image_finder.basedir}/out/production/GPS Image Finder"/>
+  <property name="gps_image_finder.testoutput.dir" value="${module.gps_image_finder.basedir}/out/test/GPS Image Finder"/>
+  
+  <path id="gps_image_finder.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="gps_image_finder.module.production.classpath">
+    <path refid="${module.jdk.classpath.gps_image_finder}"/>
+    <path refid="library.javaxt-core.classpath"/>
+  </path>
+  
+  <path id="gps_image_finder.runtime.production.module.classpath">
+    <pathelement location="${gps_image_finder.output.dir}"/>
+    <path refid="library.javaxt-core.classpath"/>
+  </path>
+  
+  <path id="gps_image_finder.module.classpath">
+    <path refid="${module.jdk.classpath.gps_image_finder}"/>
+    <pathelement location="${gps_image_finder.output.dir}"/>
+    <path refid="library.javaxt-core.classpath"/>
+  </path>
+  
+  <path id="gps_image_finder.runtime.module.classpath">
+    <pathelement location="${gps_image_finder.testoutput.dir}"/>
+    <pathelement location="${gps_image_finder.output.dir}"/>
+    <path refid="library.javaxt-core.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.gps_image_finder">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.gps_image_finder">
+    <patternset refid="excluded.from.module.gps_image_finder"/>
+  </patternset>
+  
+  <path id="gps_image_finder.module.sourcepath">
+    <dirset dir="${module.gps_image_finder.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.gps_image_finder" depends="compile.module.gps_image_finder.production,compile.module.gps_image_finder.tests" description="Compile module GPS Image Finder"/>
+  
+  <target name="compile.module.gps_image_finder.production" depends="register.custom.compilers" description="Compile module GPS Image Finder; production classes">
+    <mkdir dir="${gps_image_finder.output.dir}"/>
+    <javac2 destdir="${gps_image_finder.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.gps_image_finder}/javac">
+      <compilerarg line="${compiler.args.gps_image_finder}"/>
+      <bootclasspath refid="gps_image_finder.module.bootclasspath"/>
+      <classpath refid="gps_image_finder.module.production.classpath"/>
+      <src refid="gps_image_finder.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.gps_image_finder"/>
+    </javac2>
+    
+    <copy todir="${gps_image_finder.output.dir}">
+      <fileset dir="${module.gps_image_finder.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.gps_image_finder.tests" depends="register.custom.compilers,compile.module.gps_image_finder.production" description="compile module GPS Image Finder; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.gps_image_finder" description="cleanup module">
+    <delete dir="${gps_image_finder.output.dir}"/>
+    <delete dir="${gps_image_finder.testoutput.dir}"/>
+  </target>
+</project>
