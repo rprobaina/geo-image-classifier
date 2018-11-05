@@ -64,11 +64,12 @@ public class UI {
 
         fIn = new JFileChooser();
         fIn.setDialogTitle("Selecione a pasta de entrada.");
+
         fOut = new JFileChooser();
         fOut.setDialogTitle("Selecione a pasta de saída.");
 
         fPontos = new JFileChooser();
-        fIn.setDialogTitle("Selecione o arquivo de pontos.");
+        fPontos.setDialogTitle("Selecione o arquivo de pontos.");
 
         progressBar.setString(" ");
         /**
